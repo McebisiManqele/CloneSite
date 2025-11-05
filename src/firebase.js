@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAe5V1GHmyL3bphRJJf4y7Ku3liZqCGhiA",
-  authDomain: "bankwebsite-ebb1d.firebaseapp.com",
-  projectId: "bankwebsite-ebb1d",
-  storageBucket: "bankwebsite-ebb1d.firebasestorage.app",
-  messagingSenderId: "551719835697",
-  appId: "1:551719835697:web:4443c34eb46c5802475d10",
-  measurementId: "G-5V710PPRT8"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
