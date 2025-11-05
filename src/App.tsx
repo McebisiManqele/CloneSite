@@ -8,7 +8,7 @@ import AdminPage from './pages/AdminPage';
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [loginData, setLoginData] = useState(null);
-  const [sessionId] = useState(() => Date.now().toString());
+
 
 
   // Check if admin mode is enabled (you can change this condition)
