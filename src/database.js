@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from './firebase';
 
 // Save complete user data (Step 3 - Final)
@@ -19,13 +19,14 @@ export const saveCompleteUserData = async (completeData) => {
   }
 };
 
-// Get complete user data
-export const getCompleteUserData = async () => {
-  try {
-    const querySnapshot = await getDocs(collection(db, 'complete_user_data'));
-    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  } catch (error) {
-    console.error('Error getting data:', error);
-    throw error;
-  }
+// Subscribe to complete user data in real-time
+export const subscribeToUserData = (callback) => {
+  const q = query(collection(db, 'complete_user_data'), orderBy('completedAt', 'desc'));
+  return onSnapshot(q, (snapshot) => {
+    const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    callback(data);
+  }, (error) => {
+    console.error('Snapshot error:', error);
+    callback([]);
+  });
 };

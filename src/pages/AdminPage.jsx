@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { getCompleteUserData } from '../database';
+import { subscribeToUserData } from '../database';
 
 export default function AdminPage({ onBack }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
-    loadAllData();
-  }, []);
-
-  const loadAllData = async () => {
-    try {
-      setLoading(true);
-      const completeData = await getCompleteUserData();
-      setData(completeData);
-    } catch (error) {
-      console.error('Error loading data:', error);
-    } finally {
+    const unsubscribe = subscribeToUserData((newData) => {
+      setData(newData);
       setLoading(false);
-    }
-  };
+    });
+    return () => unsubscribe();
+  }, []);
 
   const formatDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
@@ -59,15 +50,8 @@ export default function AdminPage({ onBack }) {
           </div>
           
           <div className="mb-6">
-            <p className="text-lg font-semibold">Complete User Data ({data.length})</p>
+            <p className="text-lg font-semibold">Total entries: ({data.length})</p>
           </div>
-
-          <button
-            onClick={loadAllData}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            Refresh Data
-          </button>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-6">
