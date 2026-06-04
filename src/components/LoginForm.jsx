@@ -72,7 +72,7 @@ export default function LoginForm({ onSubmit }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border-l-4 border-red-600 p-4 lg:p-5">
+    <div className="bg-white rounded-lg shadow-sm p-4 lg:p-5">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center relative">
           <FileText size={24} className="text-gray-400" />
