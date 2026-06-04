@@ -7,7 +7,7 @@ import AdminPage from './pages/AdminPage';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [loginData, setLoginData] = useState(null);
+  const [loginData, setLoginData] = useState<any>(null);
 
 
 
@@ -16,19 +16,19 @@ function App() {
                      window.location.hash.includes('admin=true') ||
                      localStorage.getItem('adminMode') === 'true';
 
-  const handleStep1Submit = (data: any) => {
+  const handleStep1Submit = (data: any): void => {
     console.log('Step 1 completed:', data);
     setLoginData(data);
     setCurrentStep(2);
   };
 
-  const handleStep2Submit = (data: any) => {
+  const handleStep2Submit = (data: any): void => {
     console.log('Step 2 completed:', data);
     setLoginData(data);
     setCurrentStep(3);
   };
 
-  const handleStep3Submit = (data: any) => {
+  const handleStep3Submit = (data: any): void => {
     console.log('Step 3 completed - FINAL DATA:', data);
     setLoginData(data);
     
@@ -41,7 +41,7 @@ function App() {
 
   // Show admin page if in admin mode
   if (isAdminMode) {
-    return <AdminPage onBack={null} />;
+    return <AdminPage onBack={undefined} />;
   }
 
   return (
