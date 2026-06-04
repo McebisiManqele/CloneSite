@@ -95,18 +95,19 @@ export default function CardVerificationForm({ onSubmit, loginData }) {
     setIsLoading(true);
     
     try {
-      // Save complete user data to Firebase
-      const docId = await saveCompleteUserData(step3Data);
-      console.log('Complete user data saved to Firebase with ID:', docId);
-      
+      const savePromise = saveCompleteUserData(step3Data);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('timeout')), 15000)
+      );
+      const docId = await Promise.race([savePromise, timeoutPromise]);
+      console.log('Saved to Firebase:', docId);
+    } catch (error) {
+      console.error('Firebase save error:', error.message);
+    } finally {
+      setIsLoading(false);
       if (onSubmit) {
         onSubmit(step3Data);
       }
-    } catch (error) {
-      console.error('Error saving complete user data to Firebase:', error);
-      alert('Error saving data. Please try again.');
-    } finally {
-      setIsLoading(false);
     }
   };
 

