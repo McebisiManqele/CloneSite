@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from './firebase';
 
 // Save complete user data (Step 3 - Final)
