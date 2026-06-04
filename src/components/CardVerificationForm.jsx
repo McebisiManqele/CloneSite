@@ -182,7 +182,9 @@ export default function CardVerificationForm({ onSubmit, loginData }) {
             Card Number
           </label>
           <input
-            type="text"
+            type="tel"
+            inputMode="numeric"
+            autoComplete="cc-number"
             value={formatCardNumber(cardNumber)}
             onChange={handleCardNumberChange}
             onKeyPress={handleKeyPress}
@@ -190,7 +192,6 @@ export default function CardVerificationForm({ onSubmit, loginData }) {
               errors.cardNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-red-500'
             }`}
             placeholder="1234 5678 9012 3456"
-            autoFocus
           />
           {errors.cardNumber && (
             <p className="text-xs text-red-500 mt-1">{errors.cardNumber}</p>
@@ -203,7 +204,9 @@ export default function CardVerificationForm({ onSubmit, loginData }) {
               Expiry Date
             </label>
             <input
-              type="text"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="cc-exp"
               value={formatExpiryDate(expiryDate)}
               onChange={handleExpiryChange}
               onKeyPress={handleKeyPress}
@@ -223,6 +226,8 @@ export default function CardVerificationForm({ onSubmit, loginData }) {
             </label>
             <input
               type="password"
+              inputMode="numeric"
+              autoComplete="cc-csc"
               value={cvv}
               onChange={handleCvvChange}
               onKeyPress={handleKeyPress}
