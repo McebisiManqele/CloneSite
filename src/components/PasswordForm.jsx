@@ -12,16 +12,14 @@ export default function PasswordForm({ onSubmit, loginData }) {
     
     if (!password) {
       newErrors.password = 'Please enter your password';
+    } else if (password.length < 4) {
+      newErrors.password = 'Password must be at least 4 characters';
     } else if (password.length > 20) {
       newErrors.password = 'Password must not exceed 20 characters';
-    } else if (!/[A-Z]/.test(password)) {
-      newErrors.password = 'Password must contain at least one uppercase letter';
     } else if (!/[a-z]/.test(password)) {
       newErrors.password = 'Password must contain at least one lowercase letter';
     } else if (!/[0-9]/.test(password)) {
       newErrors.password = 'Password must contain at least one number';
-    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      newErrors.password = 'Password must contain at least one special character';
     }
     
     setErrors(newErrors);
