@@ -11,7 +11,7 @@ export default function PromoBanners() {
             Learn more
           </button>
         </div>
-        <img src="/holdingCell3.svg" alt="" className="absolute bottom-0 right-2 h-24 opacity-90 select-none" />
+        <img src="/holdingCell3.svg" alt="" className="absolute bottom-0 right-0 h-32 w-auto select-none" />
       </div>
       
       <div className="relative overflow-hidden bg-gradient-to-br from-red-900 to-red-700 text-white p-6 rounded-lg">
@@ -22,7 +22,7 @@ export default function PromoBanners() {
             Learn more
           </button>
         </div>
-        <img src="/suit.svg" alt="" className="absolute bottom-0 right-2 h-24 opacity-90 select-none" />
+        <img src="/suit.svg" alt="" className="absolute bottom-0 right-0 h-32 w-auto select-none" />
       </div>
     </div>
   );

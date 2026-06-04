@@ -34,7 +34,7 @@ export default function PasswordPage({ loginData, onPasswordSubmit }) {
                 </h3>
                 <p>But don't worry, it still works the same way.</p>
               </div>
-              <img src="/screen3.svg" alt="" className="w-24 h-24 object-contain" />
+              <img src="/screen3.svg" alt="" className="w-36 h-28 object-fill flex-shrink-0" />
             </div>
 
             {/* Two Column Layout */}
