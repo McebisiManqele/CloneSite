@@ -25,7 +25,7 @@ export default function UsefulInfo() {
         <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors text-left">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-base">💰</div>
-            <span className="text-sm">2025 Benefits and Pricing</span>
+            <span className="text-sm">2026 Benefits and Pricing</span>
           </div>
           <ChevronRight size={20} className="text-gray-400" />
         </button>
