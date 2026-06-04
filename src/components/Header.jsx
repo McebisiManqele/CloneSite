@@ -40,7 +40,7 @@ export default function Header() {
             Contact us
           </a>
           <a
-            href="#"
+            href="/"
             className="hidden lg:block text-xs font-semibold text-gray-900 border-b-2 border-red-600 pb-0.5 cursor-pointer"
           >
             Login
