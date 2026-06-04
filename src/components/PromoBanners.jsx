@@ -3,7 +3,7 @@ import React from 'react';
 export default function PromoBanners() {
   return (
     <div className="grid grid-cols-2 gap-6">
-        <div className="relative overflow-hidden bg-gradient-to-br from-red-900 to-red-700 text-white p-6 rounded-lg">
+      <div className="relative overflow-hidden bg-gradient-to-br from-red-900 to-red-700 text-white p-6 rounded-lg">
         <div className="relative z-10">
           <h4 className="text-xl font-bold mb-2">#ProtectYourKeysToTheSafe</h4>
           <p className="text-sm mb-4">Keep your PINs, passwords and transaction verifications safe.</p>
@@ -11,7 +11,7 @@ export default function PromoBanners() {
             Learn more
           </button>
         </div>
-        <img src="/holdingCell3.svg" alt="" className="absolute bottom-0 right-0 h-32 w-auto select-none" />
+        <div className="absolute bottom-0 right-2 text-6xl opacity-80 select-none">🧍📱</div>
       </div>
       
       <div className="relative overflow-hidden bg-gradient-to-br from-red-900 to-red-700 text-white p-6 rounded-lg">
@@ -22,7 +22,7 @@ export default function PromoBanners() {
             Learn more
           </button>
         </div>
-        <img src="/suit.svg" alt="" className="absolute bottom-0 right-0 h-32 w-auto select-none" />
+        <div className="absolute bottom-0 right-2 text-6xl opacity-80 select-none">👔📊</div>
       </div>
     </div>
   );
