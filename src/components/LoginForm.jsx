@@ -72,8 +72,8 @@ export default function LoginForm({ onSubmit }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8">
-      <div className="flex items-center gap-3 mb-6">
+    <div className="bg-white rounded-lg shadow-sm border-l-4 border-red-600 p-4 lg:p-5">
+      <div className="flex items-center gap-3 mb-4">
         <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center relative">
           <FileText size={24} className="text-gray-400" />
           {/* 33% progress ring around the icon */}
@@ -100,9 +100,9 @@ export default function LoginForm({ onSubmit }) {
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold mb-4">Login details</h2>
+      <h2 className="text-xl font-semibold mb-3">Login details</h2>
       
-      <div className="flex gap-6 mb-6 text-sm text-gray-600">
+      <div className="flex gap-6 mb-4 text-sm text-gray-600">
         <div className="flex items-center gap-2">
           <div className="w-5 h-5 border border-gray-400 rounded-full flex items-center justify-center">
             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
@@ -117,9 +117,7 @@ export default function LoginForm({ onSubmit }) {
         </div>
       </div>
 
-      <div className="bg-gray-50 p-4 rounded mb-6 text-sm text-gray-700">
-        Never share your login details with anyone
-      </div>
+      <p className="text-sm text-gray-600 mb-3">Never share your login details with anyone</p>
 
       <div>
         <div className="mb-4">
@@ -131,7 +129,7 @@ export default function LoginForm({ onSubmit }) {
             value={accessNumber}
             onChange={handleAccessNumberChange}
             onKeyPress={handleKeyPress}
-            className={`w-full px-4 py-3 border rounded focus:outline-none focus:ring-2 focus:border-transparent ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:border-transparent ${
               errors.accessNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-red-500'
             }`}
             placeholder=""
@@ -149,7 +147,7 @@ export default function LoginForm({ onSubmit }) {
             value={pin}
             onChange={handlePinChange}
             onKeyPress={handleKeyPress}
-            className={`w-full px-4 py-3 border rounded focus:outline-none focus:ring-2 focus:border-transparent ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:border-transparent ${
               errors.pin ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-red-500'
             }`}
             placeholder=""
@@ -183,7 +181,7 @@ export default function LoginForm({ onSubmit }) {
             value={userNumber}
             onChange={(e) => setUserNumber(e.target.value)}
             onKeyPress={handleKeyPress}
-            className={`w-full px-4 py-3 border rounded focus:outline-none focus:ring-2 focus:border-transparent ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:border-transparent ${
               errors.userNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-red-500'
             }`}
           />
@@ -195,14 +193,14 @@ export default function LoginForm({ onSubmit }) {
         <button
           onClick={handleNext}
           disabled={isLoading}
-          className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-semibold py-3 rounded transition-colors mb-4"
+          className="w-full bg-[#FF6600] hover:bg-[#e55c00] disabled:bg-orange-300 text-white font-semibold py-2.5 rounded-md transition-colors mb-3"
         >
           {isLoading ? 'Saving...' : 'Next'}
         </button>
 
         <button
           type="button"
-          className="w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold py-3 rounded transition-colors"
+          className="w-full border-2 border-[#FF6600] text-[#FF6600] hover:bg-orange-50 font-semibold py-2.5 rounded-md transition-colors"
         >
           Forgot PIN?
         </button>
